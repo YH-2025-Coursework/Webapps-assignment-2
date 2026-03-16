@@ -416,3 +416,15 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Environment-specific config
+appsettings.Development.json
+
+# AI agents
+.claude/
+.cursor/
+.windsurf/
+
+# Markdown (except README)
+*.md
+!README.md
