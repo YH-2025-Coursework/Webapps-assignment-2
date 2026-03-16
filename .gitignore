@@ -417,6 +417,12 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+# Node.js
+node_modules/
+*.db
+*.db-shm
+*.db-wal
+
 # Environment-specific config
 appsettings.Development.json
 
