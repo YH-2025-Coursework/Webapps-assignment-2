@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Status Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <button id="toggle-services" class="header-btn">☰ Services</button>
+      <h1 class="header-title">GitHub Status Dashboard</h1>
+      <button id="toggle-incidents" class="header-btn">Incidents ☰</button>
+    </header>
+
+    <main class="main">
+      <section class="section">
+        <h2 class="section-title">Service Status</h2>
+        <div id="status-grid" class="status-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Incident Timeline</h2>
+        <div id="timeline" class="timeline-container"></div>
+      </section>
+    </main>
+
+    <aside id="services-panel" class="panel panel-left">
+      <div class="panel-header">
+        <h2 class="panel-title">Services</h2>
+        <button class="panel-close">✕</button>
+      </div>
+      <div id="services-list" class="panel-body"></div>
+    </aside>
+
+    <aside id="incidents-panel" class="panel panel-right">
+      <div class="panel-header">
+        <h2 class="panel-title">Incidents</h2>
+        <button class="panel-close">✕</button>
+      </div>
+      <div id="incidents-list" class="panel-body"></div>
+      <div id="incident-detail" class="panel-body" hidden></div>
+    </aside>
+
+    <div id="overlay" class="overlay"></div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
