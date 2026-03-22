@@ -21,7 +21,7 @@ function create(incidentId, data) {
     VALUES (?, ?, ?, ?)
   `).run(incidentId, data.body, now, now);
 
-  return db.prepare("SELECT * FROM internal_notes WHERE id = ?").get(result.lastInsertRowid);
+  return parseNote(db.prepare("SELECT * FROM internal_notes WHERE id = ?").get(result.lastInsertRowid));
 }
 
 function update(incidentId, noteId, data) {
@@ -35,7 +35,7 @@ function update(incidentId, noteId, data) {
   db.prepare("UPDATE internal_notes SET body = ?, updated_at = ? WHERE id = ?")
     .run(data.body, now, noteId);
 
-  return db.prepare("SELECT * FROM internal_notes WHERE id = ?").get(noteId);
+  return parseNote(db.prepare("SELECT * FROM internal_notes WHERE id = ?").get(noteId));
 }
 
 function remove(incidentId, noteId) {

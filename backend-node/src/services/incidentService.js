@@ -14,7 +14,7 @@ function getById(id) {
     .prepare("SELECT * FROM incident_updates WHERE incident_id = ? ORDER BY created_at DESC")
     .all(id);
 
-  return { ...parseIncident(incident), updates };
+  return { ...parseIncident(incident), updates: updates.map(parseUpdate) };
 }
 
 function create(data) {
@@ -65,6 +65,15 @@ function addUpdate(incidentId, data) {
   `).run(id, incidentId, data.status, data.body, now);
 
   return db.prepare("SELECT * FROM incident_updates WHERE id = ?").get(id);
+}
+
+function parseUpdate(row) {
+  return {
+    id: row.id,
+    status: row.status,
+    body: row.body,
+    createdAt: row.created_at,
+  };
 }
 
 function parseIncident(row) {
