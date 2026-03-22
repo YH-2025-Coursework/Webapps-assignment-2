@@ -125,6 +125,8 @@ The frontend is split into four ES modules:
 - **`dom.js`** - all rendering; accepts callbacks for async operations rather than calling the API directly
 - **`main.js`** - orchestrates everything: fetches both APIs in parallel, passes data to the DOM layer, provides callbacks that call the API layer
 
+The frontend uses a subset of the available endpoints - services and incidents are read-only in the UI, incident updates are append-only, and internal notes support full CRUD. The remaining endpoints (creating or deleting services and incidents) are available in the API but not exposed in the frontend.
+
 On load, `main.js` calls `Promise.allSettled([fetchServices(), fetchIncidents()])`. If either fails, the available data is rendered and an error message is shown for the unavailable part. Services and incidents are joined client-side by integer service ID.
 
 ---
